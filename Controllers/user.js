@@ -1,4 +1,4 @@
-const User = require ("../Models");
+const User = require("../Models/user");
 
 
 
@@ -15,15 +15,17 @@ async function handleGetSingleUser(req,res) {
 }
 
 async function handleUpdateSingleUser(req,res) {
-    const updateUser = await findByIdAndUpdate(req.params.id , {...req.body});
+    console.log(req.body)
+    const updateUser = await User.findByIdAndUpdate(req.params.id , {...req.body});
+    if(!updateUser) return res.status(404).json({msg:"user is not found"})
     return res.status(200).json({success:"updated user"})
 }
 
 
 
 async function handleDeleteSingleUser(req,res) {
-    const deleteUser = await findByIdAndDelete(req.params.id);
-    return res.status(200).json({success:"updated user"})
+    const deleteUser = await User.findByIdAndDelete(req.params.id);
+    return res.status(200).json({success:"deleted user"})
 }
 
 

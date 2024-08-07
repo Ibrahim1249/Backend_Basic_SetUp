@@ -1,13 +1,13 @@
 const express = require("express");
 const {connectMongoose} = require("./connection")
-const userRouter = require("./Routers")
+const userRouter = require("./Routers/user")
 
 
 const app = express()
 const PORT = 8000
 
 // mongoose connection
-connectMongoose().then(()=>{console.log("mongoose is started!!")})
+connectMongoose("mongodb://127.0.0.1:27017/basic_setup").then(()=>{console.log("mongoose is started!!")})
 
 // middlewares
 app.use(express.urlencoded({extended:false}))

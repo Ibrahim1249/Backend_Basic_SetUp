@@ -1,26 +1,24 @@
 
 const mongoose = require("mongoose");
-const { type } = require("os");
-
 
 const userSchema = new mongoose.Schema({
     first_name :{
-        type : string,
+        type : String,
         required:true
     },
     last_name : {
-        type:string
+        type:String
     },
     email:{
-        type:string,
+        type:String,
         required:true,
         unique : true
     },
     gender : {
-       type : string
+       type : String
     },
     job_title : {
-        type:string
+        type:String
     }
 })
 
